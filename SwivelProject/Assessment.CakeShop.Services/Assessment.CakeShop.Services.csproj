@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Assessment.CakeShop.Core\Assessment.CakeShop.Core.csproj" />
+    <ProjectReference Include="..\Assessment.CakeShop.EfCore\Assessment.CakeShop.EfCore.csproj" />
+    <ProjectReference Include="..\Assessment.DataAccess.EfCore\Assessment.DataAccess.EfCore.csproj" />
+  </ItemGroup>
+
 </Project>

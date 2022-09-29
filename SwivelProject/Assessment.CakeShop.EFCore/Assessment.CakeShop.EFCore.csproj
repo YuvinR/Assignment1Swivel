@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <ProjectReference Include="..\Assessment.CakeShop.Core\Assessment.CakeShop.Core.csproj" />
+    <ProjectReference Include="..\Assessment.DataAccess.EfCore\Assessment.DataAccess.EfCore.csproj" />
   </ItemGroup>
 
 </Project>
