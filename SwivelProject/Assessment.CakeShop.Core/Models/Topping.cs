@@ -11,7 +11,7 @@ namespace Assessment.CakeShop.Core.Models
         public Guid Id { get; set; }
         public string ToppingName { get; set; }
         public int InitialQuantity { get; set; }
-        public string ToppingPrice { get; set; }
+        public decimal ToppingPrice { get; set; }
         public bool IsActive { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

@@ -36,10 +36,9 @@ namespace Assessment.CakeShop.Api.Controllers
                 var res = await cakeShapeService.SaveCakeShape(cakeShape);
                 if (res)
                 {
-                    return CreatedAtAction("Save Cake", new { cakeShape.Id }, cakeShape);
+                    return Ok("Saved Successfully");
                 }
 
-                return CreatedAtAction("Save Cake", new { cakeShape.Id }, null);
             }
 
             return new JsonResult("Somethign Went wrong") { StatusCode = 500 };
@@ -63,10 +62,9 @@ namespace Assessment.CakeShop.Api.Controllers
                 var res = await toppingService.SaveTopping(topping);
                 if (res)
                 {
-                    return CreatedAtAction("Save Topping", new { topping.Id }, topping);
+                    return Ok("Saved Successfully");
                 }
 
-                return CreatedAtAction("Save Topping", new { topping.Id }, null);
             }
 
             return new JsonResult("Somethign Went wrong") { StatusCode = 500 };
