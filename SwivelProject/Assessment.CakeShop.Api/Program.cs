@@ -2,7 +2,10 @@ using Assessment.CakeShop.Core.Services.Common;
 using Assessment.CakeShop.Core.Services.IService;
 using Assessment.CakeShop.Services;
 using Assessment.DataAccess.EfCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,25 @@ builder.Services.AddDbContext<DBContext>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IToppingService, ToppingService>();
 builder.Services.AddTransient<ICakeShapeService, CakeShapeService>();
+builder.Services.AddTransient<IAuthService, AuthService>();
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+          .AddJwtBearer(x =>
+          {
+              x.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuerSigningKey = true,
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("KeyoftheexternalAPI")),
+                  ValidateIssuer = false,
+                  ValidateAudience = false,
+                  // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                  ClockSkew = TimeSpan.Zero
+              };
+          });
 
 var app = builder.Build();
 
@@ -30,9 +52,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors(policy => policy.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials());
 app.MapControllers();
 
 app.Run();
