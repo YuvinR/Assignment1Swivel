@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assessment.DataAccess.EfCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assessment.CakeShop.EfCore", "Assessment.CakeShop.EfCore\Assessment.CakeShop.EfCore.csproj", "{FD019327-4277-4432-9358-48B0155F3BE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assessment.CakeShop.UnitTest", "Assessment.CakeShop.UnitTest\Assessment.CakeShop.UnitTest.csproj", "{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{FD019327-4277-4432-9358-48B0155F3BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD019327-4277-4432-9358-48B0155F3BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD019327-4277-4432-9358-48B0155F3BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{228907FF-BE76-4F35-94CE-D789D6B8B89D} = {7F91B300-8B6A-4DB1-B510-8CADB0EE5C37}
 		{FD85B160-CFE2-4005-86DB-71D11C7597B2} = {228907FF-BE76-4F35-94CE-D789D6B8B89D}
 		{FD019327-4277-4432-9358-48B0155F3BE2} = {7F91B300-8B6A-4DB1-B510-8CADB0EE5C37}
+		{1CC10725-B3EE-4BB5-9AC8-BB9391475FDA} = {6D1D2745-DB1E-45C4-87A7-8237B0DD6B48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6B3E39F-39D5-4F02-BEEB-F066BB94D8B6}

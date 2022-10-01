@@ -9,9 +9,10 @@ namespace Assessment.DataAccess.EfCore
         {
         }
 
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Topping> Toppings { get; set; }
         public virtual DbSet<CakeShape> CakeShapes { get; set; }
+        public virtual DbSet<UserForm> UserForms { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

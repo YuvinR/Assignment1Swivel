@@ -24,7 +24,9 @@ builder.Services.AddDbContext<DBContext>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IToppingService, ToppingService>();
 builder.Services.AddTransient<ICakeShapeService, CakeShapeService>();
+builder.Services.AddTransient<IHashService, HashService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
+
 
 builder.Services.AddAuthentication(x =>
 {

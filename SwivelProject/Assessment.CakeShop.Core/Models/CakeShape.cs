@@ -10,7 +10,7 @@ namespace Assessment.CakeShop.Core.Models
     {
         public Guid Id { get; set; }
         public string ShapeName { get; set; }
-        public decimal ShapePrice { get; set; }
+        public float ShapePrice { get; set; }
         public bool IsActive { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

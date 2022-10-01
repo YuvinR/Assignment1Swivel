@@ -21,5 +21,12 @@ namespace Assessment.CakeShop.Api.Controllers
         {
             return Ok(AuthService.GetToken(login));
         }
+
+        //[HttpPost]
+        //[Route("Register")]
+        //public async Task<IActionResult> Register(UserRegModel regModel)
+        //{
+        //    return Ok(AuthService.Register(regModel));
+        //}
     }
 }

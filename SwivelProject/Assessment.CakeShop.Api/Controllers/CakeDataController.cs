@@ -21,10 +21,10 @@ namespace Assessment.CakeShop.Api.Controllers
 
         [HttpGet]
         [Route("GetCakeShapes")]
-        public async Task<IActionResult> GetCakeShapes()
+        public async Task<List<CakeShape>> GetCakeShapes()
         {
             var cakeShapes = await cakeShapeService.GetCakeShapeList();
-            return Ok(cakeShapes);
+            return cakeShapes;
         }
 
         [HttpPost]
@@ -47,10 +47,10 @@ namespace Assessment.CakeShop.Api.Controllers
 
         [HttpGet]
         [Route("GetToppings")]
-        public async Task<IActionResult> GetToppings()
+        public async Task<List<Topping>> GetToppings()
         {
             var toppings = await toppingService.GetToppingList();
-            return Ok(toppings);
+            return toppings;
         }
 
         [HttpPost]
