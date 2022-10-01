@@ -14,7 +14,6 @@ async function login(data) {
         password: data.password
     }
     const response = await CommonPost('api/Auth/Authorize', body);
-    console.log("response",response.data);
     return response;
 }
 
@@ -32,7 +31,6 @@ async function getAllToppings() {
 async function CreateOrder(data) {
   
     const response = await CommonPostAxios('api/Order/CreateOrder', data);
-    console.log("response",response.data);
     return response;
 }
 

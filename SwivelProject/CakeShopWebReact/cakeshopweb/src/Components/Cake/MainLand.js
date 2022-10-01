@@ -1,28 +1,23 @@
 import React, { useState, useEffect, Fragment, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+    Button
+} from '@mui/material';
 
 export default function MainLand(props) {
-    
+
     const navigate = useNavigate();
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (sessionStorage.getItem('token') === "" || sessionStorage.getItem('token') == null || sessionStorage.getItem('token') === undefined) {
+    
+    async function nav(e) {
+        navigate('/cakeOrder');
+    }
 
-                navigate('/login');
-            } else {
-                console.log("secure route");
-                navigate('/cakeOrder');
-            }
-        }, 3000);
-        return () => clearTimeout(timer);
-
-    });
-   
-
-  return (
-    <Fragment>
-        <div>
-        </div>
-    </Fragment>
+    return (
+        <Fragment>
+            <div>
+                <br /><br /><br />
+                <Button variant="contained" onClick={nav}>Place an Order</Button>
+            </div>
+        </Fragment>
     )
 }

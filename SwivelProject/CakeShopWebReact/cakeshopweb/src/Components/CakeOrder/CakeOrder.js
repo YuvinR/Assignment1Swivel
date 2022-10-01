@@ -1,21 +1,14 @@
 import React, { useState, useEffect, Fragment, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik, validateYupSchema } from 'formik';
+import { Formik } from 'formik';
 import {
     Box,
-    Card,
     Grid,
     TextField,
     Container,
     Button,
-    CardContent,
-    Divider,
-    InputLabel,
-    Switch,
-    CardHeader,
     MenuItem,
-    Typography,
-    FormControl
+    Typography
 } from '@mui/material';
 import services from './Services';
 import Table from '@mui/material/Table';
@@ -25,9 +18,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-import * as Yup from "yup";
-import { shape } from '@mui/system';
 
 function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
@@ -97,6 +87,12 @@ export default function CakeOrder(props) {
 
 
     async function add(e) {
+        let filterToppingset = toppingsSet.find(x => x.toppingID == formData.toppingID)
+        if (filterToppingset != null || filterToppingset != undefined) {
+            alert("Already Added!");
+            return;
+        }
+
         let arr = [...toppingsSet]
 
         let filterTopping = toppings.find(x => x.id == formData.toppingID)
@@ -118,14 +114,14 @@ export default function CakeOrder(props) {
     async function CalculatePrice() {
         let filterTopping = '';
         var toppingPrice = 0;
-        
-        if(formData.shapeID!=0 ||formData.shapeID!='' ){
+
+        if (formData.shapeID != 0 || formData.shapeID != '') {
             var shapeList = [...shapes]
-        
-            filterTopping= shapeList.find(x => x.id == formData.shapeID)
+
+            filterTopping = shapeList.find(x => x.id == formData.shapeID)
             toppingPrice = filterTopping.shapePrice
         }
-      
+
         var sizePrice = 0.01 * formData.size;
 
 
@@ -157,26 +153,25 @@ export default function CakeOrder(props) {
 
     async function PlaceOrder() {
 
-        var newArr=[];
+        var newArr = [];
 
         toppingsSet.forEach(element => {
-            let obj={
+            let obj = {
                 toppingID: element.toppingID,
-                toppingPrice : element.toppingPrice
+                toppingPrice: element.toppingPrice
             }
             newArr.push(obj)
         });
 
-        let finalObj={
-            shapeID:formData.shapeID,
-            size:parseFloat(formData.size),
-            message:formData.msg,
-            totalPrice:parseFloat(calValue),
-            orderToppings :newArr
+        let finalObj = {
+            shapeID: formData.shapeID,
+            size: parseFloat(formData.size),
+            message: formData.msg,
+            totalPrice: parseFloat(calValue),
+            orderToppings: newArr
         }
 
         var res = services.CreateOrder(finalObj);
-        console.log("resss",res);
     }
 
     return (
@@ -204,7 +199,6 @@ export default function CakeOrder(props) {
                             msg: formData.msg,
                             noOfStaws: formData.noOfStaws
                         }}
-                        // onSubmit={(values) => trackPromise(saveDetails(values))}
                         enableReinitialize
 
                     >
@@ -232,8 +226,6 @@ export default function CakeOrder(props) {
                                             name="shapeID"
                                             value={formData.shapeID}
                                             onChange={(e) => handleChange1(e)}
-                                        //error={Boolean(touched.productSubCategoryID && errors.productSubCategoryID)}
-                                        //helperText={touched.productSubCategoryID && errors.productSubCategoryID}
 
                                         >
                                             <MenuItem key={0} value={0}> --Select Shape--</MenuItem>
@@ -308,8 +300,6 @@ export default function CakeOrder(props) {
                                             name="noOfToppings"
                                             value={formData.noOfToppings}
                                             onChange={(e) => handleChange1(e)}
-                                        //error={Boolean(touched.productSubCategoryID && errors.productSubCategoryID)}
-                                        //helperText={touched.productSubCategoryID && errors.productSubCategoryID}
 
 
                                         >
@@ -350,14 +340,14 @@ export default function CakeOrder(props) {
                                 </TableContainer>
                                 <br /><br />
                                 <Typography variant="h3" gutterBottom>
-                                     Total($) :{calValue}
+                                    Total($) :{calValue}
                                 </Typography>
                                 <br />
                                 <Button variant="outlined" onClick={clear}>Clear</Button>
                                 &nbsp;
                                 <Button variant="contained" onClick={PlaceOrder}>Submit</Button>
-                               
-                                
+
+
                             </div>
                         )}
                     </Formik>

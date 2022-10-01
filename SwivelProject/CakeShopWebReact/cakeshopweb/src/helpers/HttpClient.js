@@ -50,7 +50,6 @@ export const CommonGetAxios = async (url, queryString) => {
     }
 
     return await axios.get(originURL, [header]).then(response => {
-        console.log("responseCommonGetAxios",response);
         if (response.statusText === 'Token Time Exceed') {
             window.logout.logout();
         } else {

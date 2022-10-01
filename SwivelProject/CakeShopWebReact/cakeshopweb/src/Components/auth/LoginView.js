@@ -41,7 +41,7 @@ const LoginView = () => {
       return;
     }
     sessionStorage.setItem('token', result.data);
-    navigate('/cakeOrder');
+    navigate('/mainLand');
   }
 
   return (
